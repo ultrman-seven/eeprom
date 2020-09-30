@@ -39,8 +39,8 @@ un8 Read24C02(un8 address)
 	while (SDA);
 	iicStart();
 	iicSendByte(0xa1);
-	return iicReadByte();
 	iicEnd();
+	return iicReadByte();
 }
 
 /*
@@ -83,7 +83,8 @@ un8 iicReadByte(void)
 		delay(DELAY_10us);
 		SCL = 1;
 		delay(DELAY_10us);
-		result = result * 2 + SDA;
+		result <<= 1;
+		result |= SDA;
 		SCL = 0;
 	}
 	return result;

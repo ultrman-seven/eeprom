@@ -33,6 +33,7 @@ void main()
 
 			case 17:case 18:case 19://get data from eeprom and send in to input
 				input = Read24C02(1);
+				break;
 
 			case 12:// +
 				left = input;

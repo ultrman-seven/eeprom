@@ -1,4 +1,4 @@
-//IIC����ͨ��
+//IIC总线通信
 #include<reg52.h>
 #define DELAY_10us 10
 typedef unsigned char un8;
@@ -35,7 +35,7 @@ un8 iccSendByte(un8 send)
 	return 1;
 }
 
-void iccStart(void)//SCL��Ϊ�ߵ�ƽ�ڼ䣬SDA���ɸߵ�ƽ��͵�ƽ�ı仯��ʾ��ʼ�ź�
+void iccStart(void)//SCL线为高电平期间，SDA线由高电平向低电平的变化表示起始信号
 {
 	SCL = SDA = 1;
 	delay(DELAY_10us);
@@ -44,7 +44,7 @@ void iccStart(void)//SCL��Ϊ�ߵ�ƽ�ڼ䣬SDA���ɸߵ�ƽ��͵�ƽ�ı仯��ʾ��ʼ�ź�
 	SCL = 0;
 }
 
-void iccEnd(void)//SCL��Ϊ�ߵ�ƽ�ڼ䣬SDA���ɵ͵�ƽ��ߵ�ƽ�ı仯��ʾ��ֹ�źš�  
+void iccEnd(void)//SCL线为高电平期间，SDA线由低电平向高电平的变化表示终止信号。  
 {	
 	SDA = 0;
 	SCL = 1;

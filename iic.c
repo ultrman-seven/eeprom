@@ -34,9 +34,9 @@ un8 Read24C02(un8 address)
 {
 	iicStart();
 	iicSendByte(0xa0);
-	while (SDA);
+	delay(DELAY_10us);//while (SDA);
 	iicSendByte(address);
-	while (SDA);
+	delay(DELAY_10us);//while (SDA);
 	iicStart();
 	iicSendByte(0xa1);
 	iicEnd();
